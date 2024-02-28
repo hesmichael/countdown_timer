@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ body {
+  font-family: 'Arial', sans-serif;
+  background-color: #101010;
+  color: white;
+  text-align: center;
+}
+
+#countdown {
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #09c;
+  text-shadow: 2px 2px 4px #000;
+}
+
+#startButton {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #09c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px #000;
+}
+#phone-image {
+    float: left; /* This will make the image float to the left of the text */
+    margin-right: 20px; /* This adds some space between the image and the text */
+}
+
+#countdown {
+    /* Other styles for your countdown, if necessary */
+}
+
+h1, #giveaway-message {
+    clear: both; /* This ensures that the heading and message appear below the floated image */
+}
+
+
+#startButton:hover {
+  background-color: #08b;
+
+#startButton {
+  display: block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+}
+
+</style>
+</head>
+<body>
+  <div id="content-wrapper">
+<img src="phone.jpeg" alt="iphone 15" width="200" height="400"  float: left;  margin-right: 20px;> </img>
+<div id="countdown" class="fade-in">10 days 00:00:00</div>
+<button id="startButton">Start Countdown</button>
+    </div>
+    <p id="giveaway-message"> <b>Don't miss out on your chance to win a brand new smartphone!</b></p>
+
+<script>
+document.getElementById('startButton').addEventListener('click', function() {
+  // Set the date we're counting down to
+  var countDownDate = new Date();
+  countDownDate.setDate(countDownDate.getDate() + 10);
+  var countdownElement = document.getElementById("countdown");
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="countdown"
+    countdownElement.innerHTML = days + " days " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    countdownElement.style.opacity = 1;
+ // If the countdown is finished, write some text 
+ if (distance < 0) {
+      clearInterval(x);
+      countdownElement.innerHTML = "EXPIRED";
+    }
+  }, 1000);
+});
+</script>
+
+</body>
+</html>
